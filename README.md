@@ -1,3 +1,7 @@
+# Intro
+
+This is a demo project showing different ways to create an activity feed query in Prisma that returns a list of objects from different tables.
+
 # Instructions
 
 1. Clone the repo
