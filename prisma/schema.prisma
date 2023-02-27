@@ -1,0 +1,44 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Post {
+  id       String @id @default(cuid())
+  content  String
+  feedItem FeedItem?
+}
+
+model Image {
+  id       String @id @default(cuid())
+  imgUrl   String
+  feedItem FeedItem?
+}
+
+model Video {
+  id       String @id @default(cuid())
+  videoUrl String
+  feedItem FeedItem?
+}
+
+model FeedItem {
+  id        String @id @default(cuid())
+  type      String
+  postId    String? @unique
+  imgId     String? @unique
+  videoId   String? @unique
+  post      Post? @relation(fields: [postId], references: [id])
+  image     Image? @relation(fields: [imgId], references: [id])
+  video     Video? @relation(fields: [videoId], references: [id])
+
+  // What I would like to be able to do
+  // itemId String
+  // item   (Post|Image|Video) @relation(fields: [itemId], references: [id])
+}

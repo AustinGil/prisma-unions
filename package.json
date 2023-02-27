@@ -1,0 +1,17 @@
+{
+  "name": "merp",
+  "main": "index.js",
+  "scripts": {
+    "seed": "ts-node prisma/seed.ts",
+    "start": "ts-node script.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^18.14.1",
+    "prisma": "^4.10.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.5"
+  },
+  "dependencies": {
+    "@prisma/client": "^4.10.1"
+  }
+}
